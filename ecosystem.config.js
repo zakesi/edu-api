@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'WWW',
+    name: 'NEON',
     script: 'npm',
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
     args: 'run start',
