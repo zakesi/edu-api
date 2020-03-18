@@ -26,7 +26,7 @@ pipeline {
         httpMode: 'POST',
         url: 'https://open-hl.feishu.cn/open-apis/bot/hook/7ddeaf8558374c58a7213cc288c4aa9a',
         requestBody: """{
-          "title": "Jiker nemo ${JOB_NAME}(#${BUILD_NUMBER}) is Success",
+          "title": "Jiker neon ${JOB_NAME}(#${BUILD_NUMBER}) is Success",
           "text": "You can go to ${BUILD_URL} and verify the build"
         }
         """
@@ -36,14 +36,14 @@ pipeline {
         httpMode: 'POST',
         url: 'https://open-hl.feishu.cn/open-apis/bot/hook/7ddeaf8558374c58a7213cc288c4aa9a',
         requestBody: """{
-          "title": "Jiker Nemo ${JOB_NAME} (${BUILD_NUMBER}) is Failure",
+          "title": "Jiker Neon ${JOB_NAME} (${BUILD_NUMBER}) is Failure",
           "text": "Please go to ${BUILD_URL} and verify the build"
         }
         """
     }
   }
   stages {
-    stage("Deploy Jiker Nemo VIP") {
+    stage("Deploy Jiker Neon VIP") {
       when { branch 'feature-dev' } 
       steps {
         withCredentials(bindings: [
@@ -54,7 +54,7 @@ pipeline {
           }
 
           sshCommand remote: remote, command: """
-            cd /data/www/nemo
+            cd /data/www/neon
             git pull
             git checkout ${BRANCH_NAME}
             yarn
@@ -64,26 +64,26 @@ pipeline {
         }
       }
     }
-    stage("Deploy Jiker Nemo COM") {
-      when { branch 'master' } 
-      steps {
-        withCredentials(bindings: [
-          sshUserPrivateKey(credentialsId: '9c52ecc0-1295-40e8-99e5-68a3dd3fabf3',
-            keyFileVariable: 'SSH_KEY_FILE')]) {
-          script {
-            remote_com.identityFile=SSH_KEY_FILE
-          }
+    // stage("Deploy Jiker Neon COM") {
+    //   when { branch 'master' } 
+    //   steps {
+    //     withCredentials(bindings: [
+    //       sshUserPrivateKey(credentialsId: '9c52ecc0-1295-40e8-99e5-68a3dd3fabf3',
+    //         keyFileVariable: 'SSH_KEY_FILE')]) {
+    //       script {
+    //         remote_com.identityFile=SSH_KEY_FILE
+    //       }
 
-          sshCommand remote: remote_com, command: """
-            cd /data/wwwroot/nemo
-            git pull
-            git checkout ${BRANCH_NAME}
-            yarn
-            yarn run build
-            pm2 startOrRestart ecosystem.config.js
-          """
-        }
-      }
-    }
+    //       sshCommand remote: remote_com, command: """
+    //         cd /data/wwwroot/neon
+    //         git pull
+    //         git checkout ${BRANCH_NAME}
+    //         yarn
+    //         yarn run build
+    //         pm2 startOrRestart ecosystem.config.js
+    //       """
+    //     }
+    //   }
+    // }
   }
 }
