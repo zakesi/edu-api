@@ -59,7 +59,7 @@ pipeline {
             git checkout ${BRANCH_NAME}
             yarn
             yarn run build
-            pm2 startOrRestart ecosystem.config.js
+            pm2 startOrRestart server.js
           """
         }
       }
