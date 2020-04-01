@@ -55,11 +55,10 @@ pipeline {
 
           sshCommand remote: remote, command: """
             cd /data/www/neon
-            git pull
             git checkout ${BRANCH_NAME}
-            yarn
-            yarn run build
-            pm2 startOrRestart server.js
+            git pull
+            npm run stop
+            npm run start
           """
         }
       }
