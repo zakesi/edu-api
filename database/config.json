@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "vip": {
-    "username": "root",
-    "password": "123456",
-    "database": "neon-edu-test",
-    "host": "127.0.0.1",
+    "username": "jiker_user_test",
+    "password": "jiker_user_test",
+    "database": "neon_service_test",
+    "host": "192.168.0.252",
     "dialect": "mysql"
   }
 }

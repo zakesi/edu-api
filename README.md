@@ -43,7 +43,7 @@ npx sequelize db:migrate:undo
 
 npx sequelize db:migrate:undo:all
 
-NODE_ENV=test npx sequelize db:migrate
+NODE_ENV=vip npx sequelize db:migrate
 ```
 
 ```
