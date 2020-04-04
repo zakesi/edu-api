@@ -18,15 +18,24 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
-
   config.cors = {
     credentials: true,
     origin: ctx => ctx.get('origin'),
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
+
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'neon-edu',
+    username: 'root',
+    password: '123456',
+  };
+
+  // add your user config here
+  const userConfig = {
+    // myAppName: 'egg',
   };
 
   return {

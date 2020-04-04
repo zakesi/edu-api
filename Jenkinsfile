@@ -58,7 +58,7 @@ pipeline {
             git checkout ${BRANCH_NAME}
             git pull
             npm run stop
-            npm run start
+            npm run start:local
           """
         }
       }
