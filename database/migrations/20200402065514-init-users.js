@@ -12,7 +12,7 @@ module.exports = {
       sex: INTEGER,
       birthday: DATE,
       introduction: STRING(500),
-      last_visit_at: DATE,
+      visit_at: DATE,
       created_at: DATE,
       updated_at: DATE,
     });

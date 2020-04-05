@@ -32,6 +32,8 @@ $ npm stop
 ### sequelize-cli
 [文档](https://sequelize.org/master/)
 
+[API](https://sequelize.org/master/identifiers.html)
+
 [中文文档](https://github.com/demopark/sequelize-docs-Zh-CN/tree/v5)
 
 ```
@@ -43,6 +45,7 @@ npx sequelize db:migrate:undo
 
 npx sequelize db:migrate:undo:all
 
+NODE_ENV=test npx sequelize db:migrate
 NODE_ENV=vip npx sequelize db:migrate
 ```
 

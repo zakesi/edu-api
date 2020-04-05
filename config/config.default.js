@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1584518201746_3513';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'errorHandler' ];
 
   config.cors = {
     credentials: true,
@@ -24,13 +24,12 @@ module.exports = appInfo => {
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
-  config.sequelize = {
-    dialect: 'mysql',
-    host: '127.0.0.1',
-    port: 3306,
-    database: 'neon-edu',
-    username: 'root',
-    password: '123456',
+  config.security = {
+    csrf: { enable: false },
+  };
+
+  config.jwt = {
+    secret: 'hello,jiker!',
   };
 
   // add your user config here
