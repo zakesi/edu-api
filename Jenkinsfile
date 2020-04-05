@@ -58,6 +58,7 @@ pipeline {
             git checkout ${BRANCH_NAME}
             git pull
             NODE_ENV=vip npx sequelize db:migrate
+            yarn
             yarn run stop
             yarn run start:local
           """
