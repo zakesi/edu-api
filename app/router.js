@@ -9,4 +9,6 @@ module.exports = app => {
   router.get('/api/version', controller.version.index);
   router.post('/api/sms/send', controller.auth.sms);
   router.post('/api/sms/login', controller.auth.login);
+
+  router.post('/api/notification/feishu', controller.notification.feishu);
 };
