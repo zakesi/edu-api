@@ -11,7 +11,7 @@ const smsRule = {
 class authController extends Controller {
   async sms() {
     const { ctx } = this;
-    const code = Math.random().toString().slice(2, 7);
+    const code = Math.random().toString().slice(2, 8);
     const { phone } = ctx.request.body;
     ctx.validate({
       phone: smsRule.phone,
