@@ -9,8 +9,8 @@ class feishuService extends Service {
       method: 'POST',
       contentType: 'json',
       dataType: 'json',
-      data: { title, text }
-    })
+      data: { title, text },
+    });
   }
 }
 

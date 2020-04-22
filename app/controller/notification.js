@@ -10,10 +10,10 @@ class NotificationController extends Controller {
       title: { type: 'string', required: true },
       text: { type: 'string', required: true },
     }, ctx.request.body);
-    
+
     const feishu = await this.service.feishu.botHook('d8c28bd0825d4ca28415f4c5a23732cb', {
-      title, text
-    })
+      title, text,
+    });
 
     ctx.body = {
       error_code: 0,

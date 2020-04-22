@@ -6,5 +6,6 @@ afterEach(async () => {
   await Promise.all([
     app.model.User.destroy({ truncate: true, force: true }),
     app.model.SmsLog.destroy({ truncate: true, force: true }),
+    app.model.Course.destroy({ truncate: true, force: true }),
   ]);
 });

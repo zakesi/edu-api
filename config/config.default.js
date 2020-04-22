@@ -32,6 +32,13 @@ module.exports = appInfo => {
     secret: 'hello,jiker!',
   };
 
+  config.qiniu = {
+    accessKey: 'xxx',
+    secretKey: 'xxx',
+    bucket: 'vip-assets',
+    domain: 'vip-assets.jiker.com',
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
