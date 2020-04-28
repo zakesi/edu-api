@@ -23,6 +23,8 @@ module.exports = app => {
   router.resources('zhiye_course', '/api/zhiye/course', app.controller.zhiyeCourse);
   router.post('/api/zhiye/path/sort', app.controller.zhiyePath.sort);
   router.post('/api/zhiye/course/sort', app.controller.zhiyeCourse.sort);
+  // 公司
+  router.resources('company', '/api/company', app.controller.company);
   // 服务
   router.get('/api/qiniu/token', controller.qiniu.token);
   router.post('/api/notification/feishu', controller.notification.feishu);

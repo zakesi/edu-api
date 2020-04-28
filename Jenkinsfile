@@ -47,7 +47,7 @@ pipeline {
       when { branch 'feature-dev' } 
       steps {
         withCredentials(bindings: [
-          sshUserPrivateKey(credentialsId: '9c52ecc0-1295-40e8-99e5-68a3dd3fabf3',
+          sshUserPrivateKey(credentialsId: 'jenkins',
             keyFileVariable: 'SSH_KEY_FILE')]) {
           script {
             remote.identityFile=SSH_KEY_FILE
@@ -69,7 +69,7 @@ pipeline {
     //   when { branch 'master' } 
     //   steps {
     //     withCredentials(bindings: [
-    //       sshUserPrivateKey(credentialsId: '9c52ecc0-1295-40e8-99e5-68a3dd3fabf3',
+    //       sshUserPrivateKey(credentialsId: 'jenkins',
     //         keyFileVariable: 'SSH_KEY_FILE')]) {
     //       script {
     //         remote_com.identityFile=SSH_KEY_FILE
