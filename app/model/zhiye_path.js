@@ -3,25 +3,22 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE, TEXT } = app.Sequelize;
 
-  const Course = app.model.define('course', {
+  const ZhiyePath = app.model.define('zhiye_path', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     name: STRING(255),
-    short_name: STRING(255),
-    tips: STRING(255),
+    sort: INTEGER,
+    zhiye_id: INTEGER,
     description: TEXT,
-    status: INTEGER,
-    image_url: TEXT,
     created_at: DATE,
     updated_at: DATE,
   }, { timestamps: false });
 
-  Course.associate = function() {
-    app.model.Course.hasMany(app.model.Chapter);
-    app.model.Course.belongsToMany(app.model.ZhiyePath, {
+  ZhiyePath.associate = function() {
+    app.model.ZhiyePath.belongsTo(app.model.Zhiye);
+    app.model.ZhiyePath.belongsToMany(app.model.Course, {
       through: 'zhiye_course', 
-      foreignKey: 'courseId'
+      foreignKey: 'pathId'
     });
   };
-
-  return Course;
+  return ZhiyePath;
 };
