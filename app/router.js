@@ -29,6 +29,9 @@ module.exports = app => {
   router.resources('version', '/api/version', app.controller.version);
   router.resources('story', '/api/story', app.controller.story);
   router.resources('task', '/api/task', app.controller.task);
+  router.post('/api/project/version/sort', app.controller.version.sort);
+  router.post('/api/project/story/sort', app.controller.story.sort);
+  router.post('/api/project/task/sort', app.controller.task.sort);
   // 服务
   router.get('/api/qiniu/token', controller.qiniu.token);
   router.post('/api/notification/feishu', controller.notification.feishu);

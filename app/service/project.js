@@ -54,32 +54,31 @@ class projectService extends Service {
   }
   async destroy(id) {
     const { ctx } = this;
-    const project = await ctx.model.project.findByPk(id);
-    if (!zhiye) {
+    const project = await ctx.model.Project.findByPk(id);
+
+    if (!project) {
       ctx.body = { error_code: 1, message: 'no project' };
       return;
     }
 
     await ctx.model.Version.destroy({
       where: {
-        where: {
-          project_id: project.id,
-        },
+         project_id: id,
       },
     });
     await ctx.model.Story.destroy({
       where: {
-        project_id: project.id,
+        project_id: id,
       },
     });
     await ctx.model.Task.destroy({
       where: {
-        project_id: project.id,
+        project_id: id,
       },
     });
     await project.destroy();
     return {
-      zhiye_id: id,
+      project_id: id,
     };
   }
 }

@@ -21,6 +21,12 @@ class taskController extends Controller {
     });
     ctx.body = { error_code: 0, data: { id: task.id }, message: 'success' };
   }
+  async show() {
+    const { ctx } = this;
+    const id = ctx.params.id;
+    const task = await ctx.model.Task.findByPk(id);
+    ctx.body = { error_code: 0, data: { task }, message: 'success' };
+  }
   async update() {
     const { ctx } = this;
     const id = ctx.params.id;
@@ -29,7 +35,7 @@ class taskController extends Controller {
       name: 'string'
     }, ctx.request.body);
     await ctx.model.Task.update({
-      name,
+      name, level, content, platform,
       updated_at: new Date(),
     }, {
       where: { id },
