@@ -48,7 +48,7 @@
     "migrate:local": "npx sequelize db:migrate:undo && npx sequelize db:migrate",
     "seed:local": "npx sequelize db:seed:undo && npx sequelize db:seed:all",
     "migrate:vip": "NODE_ENV=vip npx sequelize db:migrate:undo && npx sequelize db:migrate",
-    "seed:vip": "NODE_ENV=vip npx sequelize db:seed:undo && npx sequelize db:seed:all",
+    "seed:vip": "NODE_ENV=vip npx sequelize db:seed:undo && npx sequelize db:seed:all"
   },
   "ci": {
     "version": "10"
