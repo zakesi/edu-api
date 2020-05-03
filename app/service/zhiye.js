@@ -47,7 +47,7 @@ class zhiyeService extends Service {
   }
   async destroy(id) {
     const { ctx } = this;
-    const zhiye = await ctx.model.zhiye.findByPk(id);
+    const zhiye = await ctx.model.Zhiye.findByPk(id);
     if (!zhiye) {
       ctx.body = { error_code: 1, message: 'no zhiye' };
       return;

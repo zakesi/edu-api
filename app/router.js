@@ -32,6 +32,9 @@ module.exports = app => {
   router.post('/api/project/version/sort', app.controller.version.sort);
   router.post('/api/project/story/sort', app.controller.story.sort);
   router.post('/api/project/task/sort', app.controller.task.sort);
+  // 技能管理
+  router.resources('stack', '/api/stack', app.controller.stack);
+  router.resources('skill_question', '/api/skill/question', app.controller.skillQuestion);
   // 服务
   router.get('/api/qiniu/token', controller.qiniu.token);
   router.post('/api/notification/feishu', controller.notification.feishu);
