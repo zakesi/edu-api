@@ -31,6 +31,8 @@ module.exports = {
     });
   },
   down: async queryInterface => {
+    await queryInterface.dropTable('zhiye_courses');
     await queryInterface.dropTable('zhiye_paths');
+    await queryInterface.dropTable('zhiyes');
   },
 };
