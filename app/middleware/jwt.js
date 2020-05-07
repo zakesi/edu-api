@@ -13,7 +13,6 @@ module.exports = () => {
       ctx.locals.user_id = decoded.user_id;
       await next();
 
-
       // JWT.verify(token, ctx.config.JWT_SECRET, function(err, decoded) {
       //   if(!err) {
       //     ctx.locals.user_id = decoded.user_id;

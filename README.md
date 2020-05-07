@@ -8,19 +8,54 @@ nodejs eggjs simple
 
 see [egg docs][egg] for more detail.
 
+### touch config/config.local.js
+
+```
+'use strict';
+
+exports.sequelize = {
+  dialect: 'mysql',
+  host: '127.0.0.1',
+  port: 3306,
+  database: 'neon-edu',
+  username: 'root',
+  password: '123456',
+  timezone: '+08:00',
+};
+
+exports.qiniu = {
+  accessKey: 'xxx',
+  secretKey: 'xxx',
+  bucket: 'xxx',
+  domain: 'xxx.jiker.com',
+};
+```
+
+### migration && seed
+
+```bash
+npx sequelize db:migrate
+npx sequelize-cli db:seed:all
+
+# undo
+npx sequelize db:migrate:undo
+npx sequelize-cli db:seed:undo:all
+```
+
 ### Development
 
 ```bash
-$ npm i
-$ npm run dev
+$ yarn dev
 $ open http://localhost:7001/
 ```
 
 ### Deploy
 
 ```bash
-$ npm start
-$ npm stop
+$ NODE_ENV=vip npx sequelize db:migrate
+$ yarn
+$ yarn run stop
+$ yarn run start:local
 ```
 
 ### npm scripts

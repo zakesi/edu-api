@@ -29,9 +29,9 @@ module.exports = {
       group_id: INTEGER,
     });
     await queryInterface.createTable('role_permissions', {
-      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       role_id: INTEGER,
       permission_id: INTEGER,
+      permission_slug: STRING(255),
     });
   },
   down: async queryInterface => {
