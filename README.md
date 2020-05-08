@@ -38,7 +38,7 @@ npx sequelize db:migrate
 npx sequelize-cli db:seed:all
 
 # undo
-npx sequelize db:migrate:undo
+npx sequelize db:migrate:undo:all
 npx sequelize-cli db:seed:undo:all
 ```
 

@@ -35,6 +35,11 @@ module.exports = app => {
   // 技能管理
   router.resources('stack', '/api/stack', app.controller.stack);
   router.resources('skill_question', '/api/skill/question', app.controller.skillQuestion);
+  // 权限
+  router.resources('role', '/api/role', app.controller.role);
+  router.get('/api/permission', app.controller.permission.index);
+  router.resources('manager' ,'/api/manager', app.controller.manager);
+
   // 服务
   router.get('/api/qiniu/token', controller.qiniu.token);
   router.post('/api/notification/feishu', controller.notification.feishu);
