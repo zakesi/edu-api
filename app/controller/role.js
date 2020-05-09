@@ -29,7 +29,7 @@ class roleController extends Controller {
     const roleValue = role.dataValues;
     roleValue.permissions = roleValue.role_permissions.map( data => data.permission_slug);
     delete roleValue.role_permissions;
-    ctx.body = { error_code: 0, data: { role: roleValue }, message: 'success' };
+    ctx.body = { error_code: 0, data: roleValue, message: 'success' };
   }
   async create() {
     const { ctx } = this;

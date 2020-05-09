@@ -12,13 +12,21 @@ class ManagerController extends Controller {
   async index() {
     const { ctx } = this;
     const { page_size, current_page, role_id, phone, name } = ctx.query;
-    console.log(name)
     const datas = await this.ctx.service.manager.pagination({
       where: { role_id, phone, name },
       limit: page_size,
       page: current_page,
     });
     ctx.body = { error_code: 0, data: datas, message: 'success' };
+  }
+  async show() {
+    const { ctx } = this;
+    const id = ctx.params.id;
+    const manager = await this.ctx.model.Manager.findByPk(id);
+    if(!manager) {
+      return ctx.body = { error_code: 1, message: '无此管理员' };
+    }
+    ctx.body = { error_code: 0, data: manager };
   }
   async create() {
     const { ctx } = this;
@@ -29,7 +37,7 @@ class ManagerController extends Controller {
       where: { phone }
     })
 
-    if(hasManager) {
+    if(hasManager.length) {
       return ctx.body = { error_code: 1, message: '手机已经存在' };
     }
 
@@ -44,7 +52,7 @@ class ManagerController extends Controller {
     const id = ctx.params.id;
     const { name, phone, role_id } = ctx.request.body;
     ctx.validate(createRule, ctx.request.body);
-    await ctx.model.manager.update({
+    await ctx.model.Manager.update({
       name, phone, role_id,
       updated_at: new Date(),
     }, {

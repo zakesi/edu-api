@@ -57,9 +57,11 @@ pipeline {
             cd /data/www/neon
             git checkout ${BRANCH_NAME}
             git pull
-            NODE_ENV=vip npx sequelize db:migrate
             yarn
             yarn run stop
+            NODE_ENV=vip npx sequelize db:migrate:undo:all
+            NODE_ENV=vip npx sequelize db:migrate
+            NODE_ENV=vip npx sequelize-cli db:seed:all
             yarn run start:local
           """
         }
