@@ -11,9 +11,12 @@ const createRule = {
 class ManagerController extends Controller {
   async index() {
     const { ctx } = this;
+    const { page_size, current_page, role_id, phone, name } = ctx.query;
+    console.log(name)
     const datas = await this.ctx.service.manager.pagination({
-      limit: ctx.query.page_size,
-      page: ctx.query.current_page,
+      where: { role_id, phone, name },
+      limit: page_size,
+      page: current_page,
     });
     ctx.body = { error_code: 0, data: datas, message: 'success' };
   }
