@@ -33,11 +33,11 @@ class ManagerController extends Controller {
     const { name, phone, role_id } = ctx.request.body;
     ctx.validate( createRule, ctx.request.body);
 
-    const hasManager = await ctx.model.Manager.findAll({
+    const hasManager = await ctx.model.Manager.findOne({
       where: { phone }
     })
 
-    if(hasManager.length) {
+    if(hasManager) {
       return ctx.body = { error_code: 1, message: '手机已经存在' };
     }
 

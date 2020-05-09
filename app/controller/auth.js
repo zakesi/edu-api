@@ -74,6 +74,36 @@ class authController extends Controller {
       token,
     } };
   }
+  async permissions () {
+    const managerId = ctx.locals.user_id;
+    const manager = await this.ctx.model.Manager.findByPk(managerId);
+    const role_id = manager.role_id;
+    const rolePermissions = await this.ctx.model.rolePermissions.findAll({
+      where: { role_id }
+    })
+    const permissions = rolePermissions.map( data => data.permission_slug);
+    ctx.body = { error_code: 0, data: { permissions },message: 'success' };
+  }
+  async adminLogin() {
+    const { ctx } = this;
+    const { phone, code } = ctx.request.body;
+    ctx.validate(smsRule, ctx.request.body);
+
+    await ctx.service.sms.verify(phone);
+
+    const manager = await ctx.model.Manager.findOne({
+      where: { phone },
+    });
+    if(!manager) {
+      return ctx.body = { error_code: 1, message: '用户不存在' };
+    }
+
+    const token = await ctx.service.jwt.sign(manager.id);
+    ctx.body = { error_code: 0, message: 'success', data: {
+      manager,
+      token,
+    } };
+  }
 }
 
 module.exports = authController;
