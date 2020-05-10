@@ -29,33 +29,10 @@ class authController extends Controller {
     const { ctx } = this;
     const { phone, code } = ctx.request.body;
     ctx.validate(smsRule, ctx.request.body);
-
-    const sms = await ctx.model.SmsLog.findOne({
-      where: {
-        phone,
-        created_at: {
-          [Op.gt]: new Date(new Date() - 10 * 60 * 1000),
-        },
-      },
-      order: [[ 'id', 'DESC' ]],
-    });
-
-    if (!sms) {
-      ctx.body = { error_code: 1, message: '请获取验证码' };
-      return;
+    const verify = await ctx.service.sms.verify(phone, code);
+    if(verify.error_code) {
+      return ctx.body = verify
     }
-
-    if (sms.code !== code) {
-      ctx.body = { error_code: 1, message: '验证码错误' };
-      return;
-    }
-
-    await ctx.model.SmsLog.update({
-      status: 1,
-    }, {
-      where: { id: sms.id },
-    });
-
     const user = await ctx.model.User.findOrCreate({
       where: { phone },
       defaults: { phone, visit_at: new Date() },
@@ -75,6 +52,7 @@ class authController extends Controller {
     } };
   }
   async permissions () {
+    const { ctx } = this;
     const managerId = ctx.locals.user_id;
     const manager = await this.ctx.model.Manager.findByPk(managerId);
     const role_id = manager.role_id;
@@ -89,13 +67,16 @@ class authController extends Controller {
     const { phone, code } = ctx.request.body;
     ctx.validate(smsRule, ctx.request.body);
 
-    await ctx.service.sms.verify(phone);
+    const verify = await ctx.service.sms.verify(phone, code);
+    if(verify.error_code) {
+      return ctx.body = verify
+    }
 
     const manager = await ctx.model.Manager.findOne({
       where: { phone },
     });
     if(!manager) {
-      return ctx.body = { error_code: 1, message: '用户不存在' };
+      return ctx.body = { error_code: 1, message: '该用户员不存在，请联系管理员' };
     }
 
     const token = await ctx.service.jwt.sign(manager.id);

@@ -1,8 +1,10 @@
 'use strict';
 
 const Service = require('egg').Service;
+const { Op } = require('sequelize');
 class smsService extends Service {
-  async verify (phone) {
+  async verify (phone, code) {
+    const { ctx } = this;
     const sms = await ctx.model.SmsLog.findOne({
       where: {
         phone,
@@ -14,20 +16,22 @@ class smsService extends Service {
     });
 
     if (!sms) {
-      ctx.body = { error_code: 1, message: '请获取验证码' };
+      return { error_code: 1, message: '请获取验证码' };
       return;
     }
 
     if (sms.code !== code) {
-      ctx.body = { error_code: 1, message: '验证码错误' };
-      return;
+      return { error_code: 1, message: '验证码错误' };
     }
+
 
     await ctx.model.SmsLog.update({
       status: 1,
     }, {
       where: { id: sms.id },
     });
+
+    return { error_code: 0, message: 'success'}
   }
 }
 
