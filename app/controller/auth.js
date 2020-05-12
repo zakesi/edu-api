@@ -53,13 +53,7 @@ class authController extends Controller {
   }
   async permissions () {
     const { ctx } = this;
-    const managerId = ctx.locals.user_id;
-    const manager = await this.ctx.model.Manager.findByPk(managerId);
-    const role_id = manager.role_id;
-    const rolePermissions = await this.ctx.model.rolePermissions.findAll({
-      where: { role_id }
-    })
-    const permissions = rolePermissions.map( data => data.permission_slug);
+    const permissions = ctx.locals.permissions;
     ctx.body = { error_code: 0, data: { permissions },message: 'success' };
   }
   async adminLogin() {

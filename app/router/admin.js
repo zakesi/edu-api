@@ -6,6 +6,7 @@ module.exports = app => {
   // 登陆
   router.post('/api/admin/sms/send', controller.auth.sms);
   router.post('/api/admin/sms/login', controller.auth.adminLogin);
+  router.get('/api/admin/auth/permissions', Auth(), controller.auth.permissions);
   // 课程
   router.resources('course', '/api/admin/course', Auth('course.index'), controller.course);
   router.resources('chapter', '/api/admin/chapter', Auth('course.index'), controller.chapter);
