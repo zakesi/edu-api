@@ -9,10 +9,14 @@ module.exports = () => {
       ctx.app.emit('error', err, ctx);
 
       const status = err.status || 500;
-      const error = status === 500 && ctx.app.config.env === 'prod'
+      let message = status === 500 && ctx.app.config.env === 'prod'
         ? 'Internal Server Error'
         : err.message;
-      ctx.body = { error };
+
+      // 微信报错
+      message = message || err.errmsg;
+
+      ctx.body = { message };
 
       if (status === 422) {
         ctx.body = {

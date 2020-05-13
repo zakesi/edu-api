@@ -29,6 +29,18 @@ exports.qiniu = {
   bucket: 'xxx',
   domain: 'xxx.jiker.com',
 };
+
+exports.wechat = {
+  web: {
+    redirectUrl: 'http://xxx.com',
+    appid: 'xxx',
+    secret: 'xxx',
+  },
+  miniprogram: {
+    appid: 'xxx',
+    secret: 'xxx',
+  }
+}
 ```
 
 ### migration && seed

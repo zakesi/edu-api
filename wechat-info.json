@@ -1,0 +1,14 @@
+{
+  "wechatConfig": {
+    "appId": "wxf31cb4f589ed68c3",
+    "wechatRedirectUrl": "http://aitschool.com",
+    "store": "FileStore_/Users/zhuhuayu/Desktop/jiker-neon/wechat-info.json"
+  },
+  "globalToken": {
+    "count": 0
+  },
+  "urls": {},
+  "oauth": {},
+  "card": {},
+  "mp": {}
+}

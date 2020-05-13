@@ -5,9 +5,11 @@ module.exports = {
     const { INTEGER, DATE, STRING, TEXT } = Sequelize;
     await queryInterface.createTable('users', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      name: STRING(30),
-      real_name: STRING(30),
-      phone: STRING(30),
+      name: STRING(255),
+      real_name: STRING(255),
+      unionid: STRING(255),
+      section_key: STRING(255),
+      phone: STRING(255),
       avatar_url: TEXT,
       sex: INTEGER,
       birthday: DATE,

@@ -15,7 +15,8 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mysql2": "^2.1.0",
-    "qiniu": "^7.3.0"
+    "qiniu": "^7.3.0",
+    "wechat-jssdk": "^5.0.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -46,10 +47,7 @@
     "lint": "eslint .",
     "ci": "npm run lint && NODE_ENV=test npx sequelize db:migrate && npm run cov",
     "autod": "autod",
-    "migrate:local": "npx sequelize db:migrate:undo && npx sequelize db:migrate",
-    "seed:local": "npx sequelize db:seed:undo && npx sequelize db:seed:all",
-    "migrate:vip": "NODE_ENV=vip npx sequelize db:migrate:undo && npx sequelize db:migrate",
-    "seed:vip": "NODE_ENV=vip npx sequelize db:seed:undo && npx sequelize db:seed:all"
+    "migrate:all": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all"
   },
   "ci": {
     "version": "10"
