@@ -1,12 +1,12 @@
-# jiker-neon
+# Jiker EDU API
 
-nodejs eggjs simple
+Node.js eggjs
 
 ## QuickStart
 
-<!-- add docs here for user -->
-
 see [egg docs][egg] for more detail.
+
+see [wechat-jssdk][wechat-jssdk] for more detail.
 
 ### touch config/config.local.js
 
@@ -109,3 +109,4 @@ npx sequelize-cli db:seed:undo:all
 ```
 
 [egg]: https://eggjs.org
+[wechat-jssdk]: https://github.com/JasonBoy/wechat-jssdk
