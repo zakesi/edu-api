@@ -2,13 +2,26 @@
   "wechatConfig": {
     "appId": "wxf31cb4f589ed68c3",
     "wechatRedirectUrl": "http://aitschool.com",
-    "store": "FileStore_/Users/zhuhuayu/Desktop/jiker-neon/wechat-info.json"
+    "store": "FileStore_/Users/zhuhuayu/Desktop/edu-api/wechat-info.json"
   },
   "globalToken": {
     "count": 0
   },
   "urls": {},
-  "oauth": {},
+  "oauth": {
+    "oCI_l1CPdwAofDLQ9o5Y2L31xK7I": {
+      "access_token": "33_O5hKEkAuup9BfOSZovYUPNDin5Cr3hEA4EgM3sTptrgm1zny29ZPqX0W2UjU9YA5jbxt9RD7yboDiKYWHj0LZLFvSI0fRauVux4FTxR2YL4",
+      "expires_in": 7200,
+      "refresh_token": "33_ekSnZ0uNJOkSGRap2h-7Cz3nk4VALiLEADte2omfhT2mgM8m_gf5OInyczHPIMVXvpc6hdZq87NfU6bmlF8h-zwtCQ6QhML7x6m0ab-QGz8",
+      "openid": "oCI_l1CPdwAofDLQ9o5Y2L31xK7I",
+      "scope": "snsapi_login",
+      "unionid": "ocWmn1HTooaYXFY3Y29MgvS0lBrc",
+      "expirationTime": 1589552905591,
+      "key": "oCI_l1CPdwAofDLQ9o5Y2L31xK7I",
+      "createDate": "2020-05-15T12:29:25.591Z",
+      "modifyDate": "2020-05-15T12:29:25.591Z"
+    }
+  },
   "card": {},
   "mp": {}
 }
