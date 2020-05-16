@@ -22,9 +22,9 @@ class userController extends Controller {
   async updateUserInfo() {
     const { ctx } = this;
     const id = ctx.locals.user_id;
-    const { name, real_name, sex, birthday, introduction } = ctx.request.body;
+    const { name, real_name, sex, birthday, introduction, avatar_url } = ctx.request.body;
     await ctx.model.User.update({
-      name, real_name, sex, birthday, introduction,
+      name, real_name, sex, birthday, introduction, avatar_url,
       updated_at: new Date(),
     }, {
       where: { id },
