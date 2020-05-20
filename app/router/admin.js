@@ -32,6 +32,8 @@ module.exports = app => {
   // 技能
   router.resources('stack', '/api/admin/stack', Auth('stack.index'), controller.stack);
   router.resources('skill_question', '/api/admin/skill/question', Auth('skill.index'), controller.skillQuestion);
+  router.resources('advertise', '/api/admin/advertise', controller.advertise);
+  router.resources('material', '/api/admin/material', controller.material);
   // 权限
   router.resources('role', '/api/admin/role', Auth('manager.index'), controller.role);
   router.resources('manager' ,'/api/admin/manager', Auth('manager.index'), controller.manager);
