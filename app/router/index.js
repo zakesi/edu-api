@@ -19,4 +19,11 @@ module.exports = app => {
   router.put('/api/user/phone-bind', Auth(), controller.user.bindPhone);
   router.get('/api/user/wechat-bind', Auth(), controller.user.bindWechat);
   router.delete('/api/user/wechat-bind', Auth(), controller.user.unBindWechat);
+  // 课程
+  router.get('/api/course/www-recommand', controller.course.wwwRecommand);
+  router.get('/api/course/:id', controller.course.show);
+  router.get('/api/section/:id', controller.section.show);
+  // 职业
+  router.get('/api/zhiye/www-recommand', controller.zhiye.wwwRecommand);
+  router.get('/api/zhiye/:id', controller.zhiye.show);
 };

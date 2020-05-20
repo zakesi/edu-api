@@ -60,6 +60,18 @@ class CourseController extends Controller {
     await ctx.service.course.destroy(id);
     ctx.body = { error_code: 0, message: 'success' };
   }
+  async wwwRecommand() {
+    const { ctx } = this;
+    const limit = ctx.query.count || 4;
+    const courses = await ctx.model.Course.findAll({ 
+      limit, 
+      where: {
+        status: 1,
+      },
+      order: [['id', 'DESC']]
+     });
+    ctx.body = { error_code: 0, message: 'success', data: { courses } };
+  }
 }
 
 module.exports = CourseController;

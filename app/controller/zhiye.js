@@ -53,6 +53,18 @@ class ZhiyeController extends Controller {
     await ctx.service.zhiye.destroy(id);
     ctx.body = { error_code: 0, message: 'success' };
   }
+  async wwwRecommand() {
+    const { ctx } = this;
+    const limit = ctx.query.count || 4;
+    const zhiyes = await ctx.model.Zhiye.findAll({ 
+      limit,
+      where: {
+        status: 1
+      },
+      order: [['id', 'DESC']]
+    });
+    ctx.body = { error_code: 0, message: 'success', data: { zhiyes }};
+  }
 }
 
 module.exports = ZhiyeController;

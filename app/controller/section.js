@@ -10,7 +10,7 @@ const createRule = {
   sort: 'number',
 };
 
-class ChapterController extends Controller {
+class SectionController extends Controller {
   async show() {
     const { ctx } = this;
     const id = ctx.params.id;
@@ -75,4 +75,4 @@ class ChapterController extends Controller {
   }
 }
 
-module.exports = ChapterController;
+module.exports = SectionController;
