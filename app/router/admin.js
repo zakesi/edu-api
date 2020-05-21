@@ -32,8 +32,11 @@ module.exports = app => {
   // 技能
   router.resources('stack', '/api/admin/stack', Auth('stack.index'), controller.stack);
   router.resources('skill_question', '/api/admin/skill/question', Auth('skill.index'), controller.skillQuestion);
-  router.resources('advertise', '/api/admin/advertise', controller.advertise);
-  router.resources('material', '/api/admin/material', controller.material);
+  router.resources('advertise', '/api/admin/advertise', Auth('advertise.index'), controller.advertise);
+  router.resources('material', '/api/admin/material', Auth('material.index'), controller.material);
+  router.resources('advertise_material', '/api/admin/advertise/material', Auth('advertise.index'), controller.advertiseMaterial);
+  router.post('/api/admin/advertise/material/sort', Auth('advertise.index'), controller.advertiseMaterial.sort);
+
   // 权限
   router.resources('role', '/api/admin/role', Auth('manager.index'), controller.role);
   router.resources('manager' ,'/api/admin/manager', Auth('manager.index'), controller.manager);
