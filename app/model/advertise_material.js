@@ -3,15 +3,12 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE, TEXT } = app.Sequelize;
 
-  const Advertise = app.model.define('advertises', {
+  const AdvertiseMaterial = app.model.define('advertise_materials', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    name: STRING(255),
-    slug: TEXT,
-    width: INTEGER,
-    height: INTEGER,
-    created_at: DATE,
-    updated_at: DATE,
+    sort: INTEGER,
+    advertise_id: INTEGER,
+    material_id: INTEGER,
   }, { timestamps: false });
 
-  return Advertise;
+  return AdvertiseMaterial;
 };

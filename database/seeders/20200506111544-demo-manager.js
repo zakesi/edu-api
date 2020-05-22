@@ -6,7 +6,8 @@ module.exports = {
       { id: 1, name: '职业课程'},
       { id: 2, name: '项目管理'},
       { id: 3, name: '测评管理'},
-      { id: 4, name: '权限管理'}
+      { id: 4, name: '权限管理'},
+      { id: 5, name: '广告管理'}
     ]);
     await queryInterface.bulkInsert('permissions', [
       { id: 1, name: '路径管理', slug: 'zhiye.index', group_id: 1 }, 
@@ -16,6 +17,8 @@ module.exports = {
       { id: 5, name: '技能管理', slug: 'stack.index', group_id: 3 },
       { id: 6, name: '题目管理', slug: 'skill.index', group_id: 3 },
       { id: 7, name: '管理员管理', slug: 'manager.index', group_id: 4 },
+      { id: 8, name: '广告管理', slug: 'advertise.index', group_id: 5},
+      { id: 9, name: '物料管理', slug: 'material.index', group_id: 5},
     ]);
     await queryInterface.bulkInsert('roles', [
       { id: 1, name: '管理员', description: '拥有所有权限',}
@@ -28,6 +31,8 @@ module.exports = {
       { role_id: 1 , permission_slug: 'stack.index' },
       { role_id: 1 , permission_slug: 'skill.index' },
       { role_id: 1 , permission_slug: 'manager.index' },
+      { role_id: 1 , permission_slug: 'advertise.index' },
+      { role_id: 1 , permission_slug: 'material.index'}
     ]);
     await queryInterface.bulkInsert('managers', [
       { id: 1, name: 'Jax', phone: '13511111111', role_id: 1, }

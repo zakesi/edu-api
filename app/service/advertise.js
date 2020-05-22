@@ -33,7 +33,6 @@ class AdvertiseService extends Service {
   async destroy(id) {
     const { ctx } = this;
     const advertise = await ctx.model.Advertise.findByPk(id);
-    console.log(advertise, "advertise")
     if (!advertise) {
       ctx.body = { error_code: 1, message: 'no advertise' };
       return;

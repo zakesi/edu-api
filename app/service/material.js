@@ -33,12 +33,16 @@ class MaterialService extends Service {
   async destroy(id) {
     const { ctx } = this;
     const material = await ctx.model.Material.findByPk(id);
-    console.log(material, "material")
     if (!material) {
       ctx.body = { error_code: 1, message: 'no material' };
       return;
     }
     await material.destroy();
+    await ctx.model.AdvertiseMaterial.destroy({
+      where: {
+        material_id: id,
+      },
+    });
     return {
       message: 'success'
     };
