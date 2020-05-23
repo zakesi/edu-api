@@ -1,10 +1,10 @@
 'use strict';
-
+require("dotenv").config();
 exports.sequelize = {
-  dialect: 'mysql',
-  host: '127.0.0.1',
-  port: 3306,
-  database: 'neon-edu-test',
-  username: 'root',
-  password: '123456',
+	dialect: process.env.DB_CONNECTION,
+	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
+	database: process.env.DB_DATABASE + '-test',
+	username: process.env.DB_USERNAME,
+	password: process.env.DB_PASSWORD,
 };

@@ -1,7 +1,7 @@
 /* eslint valid-jsdoc: "off" */
 
 'use strict';
-
+require("dotenv").config();
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -29,15 +29,36 @@ module.exports = appInfo => {
   };
 
   config.jwt = {
-    secret: 'hello,jiker!',
+    secret: process.env.JWT_SECRET,
+  };
+
+  config.sequelize = {
+    dialect: process.env.DB_CONNECTION,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
   };
 
   config.qiniu = {
-    accessKey: 'xxx',
-    secretKey: 'xxx',
-    bucket: 'vip-assets',
-    domain: 'vip-assets.jiker.com',
+    accessKey: process.env.QINIU_ACCESSKEY,
+    secretKey: process.env.QINIU_SECRETKEY,
+    bucket: process.env.QINIU_BUCKET,
+    domain: process.env.QINIU_DOMAIN,
   };
+
+  config.wechat = {
+    web: {
+      redirectUrl: process.env.WECHAT_REDIRECT_URL,
+      appid: process.env.WECHAT_WEB_APPID,
+      secret: process.env.WECHAT_WEB_SECRET,
+    },
+    miniprogram: {
+      appid: process.env.WECHAT_MINIPROGRAM_APPID,
+      secret: process.env.WECHAT_MINIPROGRAM_SECRET,
+    }
+  }
 
   // add your user config here
   const userConfig = {

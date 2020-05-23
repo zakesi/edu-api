@@ -2,14 +2,13 @@
 
 const Service = require('egg').Service;
 const { Wechat } = require("wechat-jssdk");
-const config = require("./../../config/config.local.js");
 const wx = new Wechat({
-  wechatRedirectUrl: config.wechat.web.redirectUrl,
-  appId: config.wechat.web.appid,
-  appSecret: config.wechat.web.secret,
+  wechatRedirectUrl: process.env.WECHAT_REDIRECT_URL,
+  appId: process.env.WECHAT_WEB_APPID,
+  appSecret: process.env.WECHAT_WEB_SECRET,
   miniProgram: {
-    appId: config.wechat.miniprogram.appid,
-    appSecret: config.wechat.miniprogram.secret
+    appId: process.env.WECHAT_MINIPROGRAM_APPID,
+    appSecret: process.env.WECHAT_MINIPROGRAM_SECRET
   }
 });
 
