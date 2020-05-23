@@ -8,39 +8,26 @@ see [egg docs][egg] for more detail.
 
 see [wechat-jssdk][wechat-jssdk] for more detail.
 
-### touch config/config.local.js
+### touch .env
 
 ```
-'use strict';
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=neon-edu
+DB_USERNAME=root
+DB_PASSWORD=123456
 
-exports.sequelize = {
-  dialect: 'mysql',
-  host: '127.0.0.1',
-  port: 3306,
-  database: 'neon-edu',
-  username: 'root',
-  password: '123456',
-  timezone: '+08:00',
-};
+QINIU_ACCESSKEY=
+QINIU_SECRETKEY=
+QINIU_BUCKET=
+QINIU_DOMAIN=
 
-exports.qiniu = {
-  accessKey: 'xxx',
-  secretKey: 'xxx',
-  bucket: 'xxx',
-  domain: 'xxx.jiker.com',
-};
-
-exports.wechat = {
-  web: {
-    redirectUrl: 'http://xxx.com',
-    appid: 'xxx',
-    secret: 'xxx',
-  },
-  miniprogram: {
-    appid: 'xxx',
-    secret: 'xxx',
-  }
-}
+WECHAT_REDIRECT_URL=
+WECHAT_WEB_APPID=
+WECHAT_WEB_SECRET=
+WECHAT_MINIPROGRAM_APPID=
+WECHAT_MINIPROGRAM_SECRET=
 ```
 
 ### migration && seed
@@ -67,7 +54,7 @@ $ open http://localhost:7001/
 $ NODE_ENV=vip npx sequelize db:migrate
 $ yarn
 $ yarn run stop
-$ yarn run start:local
+$ yarn run start
 ```
 
 ### npm scripts
@@ -85,26 +72,18 @@ $ yarn run start:local
 
 ```
 npx sequelize migration:generate --name=init-users
-
 npx sequelize db:migrate
-
 npx sequelize db:migrate:undo
-
 npx sequelize db:migrate:undo:all
-
 NODE_ENV=test npx sequelize db:migrate
 NODE_ENV=vip npx sequelize db:migrate
 ```
 
 ```
 npx sequelize-cli seed:generate --name demo-user
-
 npx sequelize-cli db:seed:all
-
 npx sequelize-cli db:seed:undo
-
 npx sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
-
 npx sequelize-cli db:seed:undo:all
 ```
 
