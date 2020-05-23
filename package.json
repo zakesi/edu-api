@@ -38,7 +38,7 @@
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-jiker-neon",
-    "start:local": "EGG_SERVER_ENV=local egg-scripts start --daemon --title=egg-server-jiker-neon",
+    "start:local": "egg-scripts start --daemon --title=egg-server-jiker-neon",
     "stop": "egg-scripts stop --title=egg-server-jiker-neon",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
