@@ -34,10 +34,11 @@ module.exports = permission => {
             ctx.status = 403;
             return ctx.body = { error_code: 1, message: 'No Auth Permission' };
         }
-        await next();
     } catch (e) {
         ctx.status = 401;
         return ctx.body = { error_code: 1, message: e.message };
     }
+
+    await next();
   };
 };

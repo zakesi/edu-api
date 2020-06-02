@@ -17,7 +17,6 @@ module.exports = () => {
       message = message || err.errmsg;
 
       ctx.body = { message };
-
       if (status === 422) {
         ctx.body = {
           error_code: 1,
