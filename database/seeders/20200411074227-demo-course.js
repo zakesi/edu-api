@@ -30,6 +30,15 @@ module.exports = {
         image_url: "https://vip-assets.jiker.com/_for_neon_project/1591172238212_819bfbdb-382a-49b5-938e-cd9121c773d7.jpg",
         created_at: new Date(),
         updated_at: new Date(),
+      }, {
+        name: 'Vue Basic',
+        status: 1,
+        short_name: 'Vue.js前端框架详解－基础&进阶&实战',
+        tips: '学习 Vue.js 前 ，请先学习 JavaScript 基础部分。',
+        description: '通过本课程的系统学习，学员将学会和掌握轻量、易学但功能强大的Vue.js前端开发库，以及由Vue.js及其高级工具和插件库组成的前端开发“框架”。',
+        image_url: "https://vip-assets.jiker.com/_for_neon_project/1591175810826_attach-6ae2b991-803f-4b63-bda9-89434d70d665.jpg",
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     ]);
 
@@ -40,7 +49,7 @@ module.exports = {
         sort: 1,
       },
       {
-        name: '第二章',
+        name: '百度实战',
         course_id: 1,
         sort: 2,
       },
@@ -65,6 +74,12 @@ module.exports = {
         content: '# 文本标签',
         video_url: 'http://as-public.qiniu.prodegree.cc/section/2018/1029/T2R85W8bszdoOz5U7z42XAetUAQesYvtL6JapwvA.mp4'
       },
+      {
+        chapter_id: 2,
+        name: "百度首页 - HTML",
+        content: "# 百度实战 - HTML",
+        video_url: 'http://as-public.qiniu.prodegree.cc/section/2018/1029/LDx3bCMFS9GqOVQ0jWjsFUE7m3Rwmltsb9rVSIGd.mp4'
+      }
     ]);
   },
   down: async queryInterface => {
