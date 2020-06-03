@@ -26,4 +26,5 @@ module.exports = app => {
   // 职业
   router.get('/api/zhiye/www-recommand', controller.zhiye.wwwRecommand);
   router.get('/api/zhiye/:id', controller.zhiye.show);
+  router.get('/api/zhiye', controller.zhiye.index);
 };
