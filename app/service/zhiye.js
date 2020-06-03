@@ -13,7 +13,7 @@ class zhiyeService extends Service {
         include: [{
           model: this.ctx.model.Course,
           as: 'courses',
-          attributes: [ 'id', 'name'],
+          attributes: [ 'id', 'name', 'short_name', 'image_url'],
         }],
       }],
       order: [

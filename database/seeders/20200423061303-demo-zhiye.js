@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('zhiyes', [
       {
         name: 'Web 前端工程师',
-        description: '前端工程师 描述',
+        description: 'Web前端工程师是目前最火的互联网职业，它能充分理解项目需求和设计需求，并与设计师、后端工程师紧密合作，产出高质量的产品前端层，为用户呈现最好的界面交互体验。',
         sort: 1,
         image_url: 'https://vip-assets.jiker.com/_for_neon_project/1591154372893_web.0579d968.png',
         created_at: new Date(),
