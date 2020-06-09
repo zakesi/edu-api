@@ -8,7 +8,6 @@ module.exports = app => {
     name: STRING(255),
     slug: STRING(255),
     image_url: STRING(1000),
-    tag_line: STRING(1000),
     description: TEXT,
     created_at: DATE,
     updated_at: DATE,
