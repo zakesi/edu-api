@@ -39,10 +39,10 @@ class stackController extends Controller {
   async update() {
     const { ctx } = this;
     const id = ctx.params.id;
-    const { name, slug, image_url, description } = ctx.request.body;
+    const { name, slug, image_url, description, status } = ctx.request.body;
     ctx.validate(createRule, ctx.request.body);
     await ctx.model.Stack.update({
-      name, slug, image_url, description,
+      name, slug, image_url, description, status,
       updated_at: new Date(),
     }, {
       where: { id },
