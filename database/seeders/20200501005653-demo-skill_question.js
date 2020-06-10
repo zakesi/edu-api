@@ -6,14 +6,14 @@ module.exports = {
       stem: 'HTML题目',
       stack_id: 1,
       option: "[0,1,2,3]",
-      currect: 0,
+      correct: 0,
       created_at: new Date(),
       updated_at: new Date(),
     }, {
       stem: 'CSS题目',
       stack_id: 2,
       option: "[0,1,2,3]",
-      currect: 1,
+      correct: 1,
       created_at: new Date(),
       updated_at: new Date(),
     }]);
