@@ -12,7 +12,9 @@ const createRule = {
 class stackController extends Controller {
   async index() {
     const { ctx } = this;
+    const { status, name } = ctx.query;
     const datas = await ctx.service.stack.pagination({
+      where: { status, name },  
       limit: ctx.query.page_size,
       page: ctx.query.current_page,
     });

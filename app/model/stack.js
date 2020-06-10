@@ -9,6 +9,7 @@ module.exports = app => {
     slug: STRING(255),
     image_url: STRING(1000),
     description: TEXT,
+    status: INTEGER,
     created_at: DATE,
     updated_at: DATE,
   }, { timestamps: false });

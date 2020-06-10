@@ -9,7 +9,7 @@ module.exports = app => {
     stack_id: INTEGER,
     level: INTEGER,
     option: TEXT,
-    currect: INTEGER,
+    correct: INTEGER,
     created_at: DATE,
     updated_at: DATE,
   }, { timestamps: false });

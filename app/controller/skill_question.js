@@ -7,13 +7,15 @@ const createRule = {
   option: 'string',
   stack_id: 'number',
   level: 'number',
-  currect: 'number',
+  correct: 'number',
 };
 
 class skillQuestionController extends Controller {
   async index() {
     const { ctx } = this;
+    const { stem, stack_id } = ctx.query;
     const datas = await ctx.service.skillQuestion.pagination({
+      where: { stack_id, stem },
       limit: ctx.query.page_size,
       page: ctx.query.current_page,
     });
@@ -27,10 +29,10 @@ class skillQuestionController extends Controller {
   }
   async create() {
     const { ctx } = this;
-    const { stem, option, stack_id, level, currect } = ctx.request.body;
+    const { stem, option, stack_id, level, correct } = ctx.request.body;
     ctx.validate( createRule, ctx.request.body);
     const stack = await ctx.model.SkillQuestion.create({
-      stem, option, stack_id, level, currect,
+      stem, option, stack_id, level, correct,
       created_at: new Date(),
     });
     ctx.body = { error_code: 0, data: { id: stack.id } };
@@ -38,10 +40,10 @@ class skillQuestionController extends Controller {
   async update() {
     const { ctx } = this;
     const id = ctx.params.id;
-    const { stem, option, stack_id, level, currect } = ctx.request.body;
+    const { stem, option, stack_id, level, correct } = ctx.request.body;
     ctx.validate(createRule, ctx.request.body);
     await ctx.model.SkillQuestion.update({
-      stem, option, stack_id, level, currect,
+      stem, option, stack_id, level, correct,
       updated_at: new Date(),
     }, {
       where: { id },

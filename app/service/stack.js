@@ -2,14 +2,15 @@
 
 const Service = require('egg').Service;
 const { Op } = require('sequelize');
-
+const _ = require('lodash');
 class stackService extends Service {
-  async pagination({ limit = 20, page = 1 }) {
+  async pagination({ limit = 20, page = 1, where = {} }) {
     limit = Number(limit);
     page = Number(page);
+    where = _.pickBy(where, Boolean);
     const offset = (page - 1) * limit;
     const query = {
-      limit, offset,
+      limit, offset, where,
       order: [
         [ 'created_at', 'desc' ],
         [ 'id', 'desc' ],
