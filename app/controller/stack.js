@@ -1,7 +1,7 @@
 'use strict';
 
 const Controller = require('egg').Controller;
-
+const { fn } = require('sequelize');
 const createRule = {
   name: 'string',
   slug: 'string',
@@ -55,6 +55,13 @@ class stackController extends Controller {
     const stack = await ctx.model.Stack.findByPk(id);
     await stack.destroy();
     ctx.body = { error_code: 0, message: 'success' };
+  }
+  async random() {
+    const { ctx } = this;
+    const id = ctx.params.id;
+    const stack = await ctx.model.Stack.findByPk(id);
+    const question = await ctx.model.SkillQuestion.findAll({ order: fn('RAND'), limit: 20 })
+    ctx.body = { error_code: 0, message: 'success', data: { stack, question } };
   }
 }
 
