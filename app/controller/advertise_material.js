@@ -47,7 +47,6 @@ class advertiseMaterialController extends Controller {
       advertise_materials: 'array',
     }, ctx.request.body);
     const updateDatas = advertise_materials.map(async (advertiseMaterialId, index) => {
-      console.log(advertiseMaterialId, index);
       return await ctx.model.AdvertiseMaterial.update({
         sort: index + 1,
       }, {

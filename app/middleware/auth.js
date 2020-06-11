@@ -21,7 +21,6 @@ module.exports = permission => {
         await next();
     } catch (e) {
         ctx.status = 401;
-        console.log(e)
         return ctx.body = { error_code: 1, message: e.message };
     }
   };

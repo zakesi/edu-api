@@ -33,7 +33,7 @@ class userController extends Controller {
   }
   async showResume() {
     const { ctx } = this;
-    const user_id = ctx.locals.user_id;
+    const user_id = ctx.params.id;
     const resume = await ctx.model.Resume.findOne({ 
       where: { user_id },
       attributes: [
