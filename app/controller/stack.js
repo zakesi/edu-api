@@ -63,6 +63,18 @@ class stackController extends Controller {
     const question = await ctx.model.SkillQuestion.findAll({ order: fn('RAND'), limit: 20 })
     ctx.body = { error_code: 0, message: 'success', data: { stack, question } };
   }
+  async wwwRecommand() {
+    const { ctx } = this;
+    const limit = ctx.query.count || 4;
+    const stacks = await ctx.model.Stack.findAll({ 
+      limit: Number(limit),
+      where: {
+        status: 1
+      },
+      order: [['id', 'DESC']]
+    });
+    ctx.body = { error_code: 0, message: 'success', data: { stacks }};
+  }
 }
 
 module.exports = stackController;
