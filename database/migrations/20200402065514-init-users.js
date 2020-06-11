@@ -18,8 +18,21 @@ module.exports = {
       created_at: DATE,
       updated_at: DATE,
     });
+    await queryInterface.createTable('resumes', {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      user_id: INTEGER,
+      job: STRING(255),
+      city: TEXT,
+      experience: TEXT,
+      capability: TEXT,
+      skills: TEXT,
+      items: TEXT,
+      created_at: DATE,
+      updated_at: DATE,
+    });
   },
   down: async queryInterface => {
     await queryInterface.dropTable('users');
+    await queryInterface.dropTable('resumes');
   },
 };
