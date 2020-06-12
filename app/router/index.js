@@ -19,8 +19,8 @@ module.exports = app => {
   router.put('/api/user/phone-bind', Auth(), controller.user.bindPhone);
   router.get('/api/user/wechat-bind', Auth(), controller.user.bindWechat);
   router.delete('/api/user/wechat-bind', Auth(), controller.user.unBindWechat);
-  router.put('/api/user/resume', Auth(), controller.user.updateResume);
-  router.get('/api/user/resume/:id', controller.user.showResume);
+  router.put('/api/user/resume', Auth(), controller.resume.updateResume);
+  router.get('/api/user/resume/:id', controller.resume.showResume);
   // 课程
   router.get('/api/course/www-recommand', controller.course.wwwRecommand);
   router.get('/api/course/:id', controller.course.show);
