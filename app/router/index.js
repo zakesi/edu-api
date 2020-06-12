@@ -31,5 +31,6 @@ module.exports = app => {
   router.get('/api/zhiye', controller.zhiye.index);
   // 测评
   router.get('/api/stack', controller.stack.index);
+  router.get('/api/stack/www-recommand', controller.stack.wwwRecommand);
   router.get('/api/stack/:id/random', controller.stack.random);
 };
